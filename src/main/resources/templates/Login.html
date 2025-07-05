@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Quiz Master</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 50px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 249, 255, 0.2);
+      width: 420px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #00f9ff;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #00f9ff;
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      outline: 2px solid #00f9ff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    input[type="submit"] {
+      background-color: #00f9ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #00c9cc;
+    }
+
+    .register-link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .register-link a {
+      color: #00f9ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .error {
+      color: #ff4b4b;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <div class="logo">🧠 Quiz Master</div>
+  <div class="tagline">Log in & challenge your brain.</div>
+
+  <h2>Login</h2>
+
+  <p class="error" th:if="${error}" th:text="${error}"></p>
+
+  <!-- ✅ Correctly bound form -->
+  <form th:action="@{/Login}" method="post">
+  <input type="email" name="email" placeholder="Email" required /><br/>
+  <input type="password" name="password" placeholder="Password" required /><br/>
+  <input type="submit" value="Login" />
+</form>
+
+  <div class="register-link">
+    Don't have an account? <a th:href="@{/Register}">Register Here</a>
+  </div>
+</div>
+
+</body>
+</html>

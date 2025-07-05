@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Master - Home</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #1e1e3f;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00f9ff;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 25px;
+    }
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover {
+      color: #00f9ff;
+    }
+    .profile-icon {
+      background-color: #00f9ff;
+      color: #000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      justify-content: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(0, 249, 255, 0.4);
+    }
+    .hero {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero-content {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(0, 249, 255, 0.2);
+    }
+    .hero-content h1 {
+      font-size: 38px;
+      color: #00f9ff;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 18px;
+      color: #d6faff;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 28px;
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .dashboard-section {
+      padding: 60px 20px;
+      background-color: #12122b;
+    }
+    .dashboard {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .dashboard-card {
+      flex: 1 1 280px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px rgba(0, 249, 255, 0.1);
+    }
+    .dashboard-card h3 {
+      font-size: 18px;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .dashboard-card p {
+      font-size: 24px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0f0c29;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Quiz Master</div>
+    <nav class="nav-menu">
+      <a href="/Home">Home</a>
+      <a href="/Quizzes">Quizzes</a>
+      <a href="/Leaderboard">Leaderboard</a>
+    </nav>
+    <a th:href="@{/Profile}" class="profile-icon" th:text="${user != null and user.email != null ? user.email.substring(0,1).toUpperCase() : 'U'}"></a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Quiz Master</h1>
+      <p>Challenge yourself with exciting quizzes and track your learning journey!</p>
+      <a href="/Quizzes" class="btn">Start a Quiz</a>
+    </div>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="dashboard">
+      <div class="dashboard-card">
+        <h3>Total Quizzes Taken</h3>
+        <p th:text="${totalQuizzes}">0</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Highest Score</h3>
+        <p th:text="${highestScore + '%'}">0%</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Last Attempt</h3>
+        <p th:text="${lastQuiz + ' - ' + lastScore + '%'}">None</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Quiz Master. All rights reserved.
+  </footer>
+</body>
+</html>

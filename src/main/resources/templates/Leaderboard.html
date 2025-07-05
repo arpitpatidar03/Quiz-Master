@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Leaderboard - Quiz Master</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #1a1a2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 249, 255, 0.2);
+        }
+
+        h2 {
+            color: #00f9ff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background-color: #00f9ff;
+            color: #000;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #00f9ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #00c9cc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>🏆 Leaderboard</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Quiz ID</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result, iter : ${results}">
+                    <td th:text="${iter.index + 1}">1</td>
+                    <td th:text="${result.user.name}">Username</td>
+                    <td th:text="${result.quiz.title}">Quiz Title</td>
+                    <td th:text="${result.score}">Score</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <a th:href="@{/Home}" class="back-link">← Back to Home</a>
+    </div>
+
+</body>
+
+</html>
