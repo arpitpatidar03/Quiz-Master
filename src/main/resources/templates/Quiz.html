@@ -80,7 +80,7 @@
   <div class="container">
     <h2 th:text="'Quiz: ' + (${quiz.title} != null ? ${quiz.title} : 'Untitled')">Quiz Title</h2>
 
-    <form th:action="@{/quizzes/submit-quiz}" method="post">
+    <form th:action="@{/Quizzes/submit-quiz}" method="post">
       <!-- ✅ Hidden quiz ID -->
       <input type="hidden" name="quizId" th:value="${quiz.id}" />
 

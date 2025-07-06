@@ -166,7 +166,7 @@
       <div class="quiz-column" th:each="quiz : ${quizzes}">
         <h3 th:text="${quiz.title}">Quiz Title</h3>
         <p th:text="${quiz.description}">Quiz Description</p>
-        <a th:href="@{'/Quizzes/quiz?quizId=' + ${quiz.id}}" class="start-btn">Start Quiz</a>
+        <a th:href="@{'/Quizzes/Quiz?quizId=' + ${quiz.id}}" class="start-btn">Start Quiz</a>
       </div>
 
     </div>

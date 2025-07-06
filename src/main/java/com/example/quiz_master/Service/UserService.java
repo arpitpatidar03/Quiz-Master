@@ -29,16 +29,15 @@ public class UserService {
 
     // User Login
     public User login(String email, String password) {
-    System.out.println("Checking login for: " + email + " / " + password);
-    User user = ur.findByEmailAndPassword(email, password);
-    if (user != null) {
-        System.out.println("User found with role: " + user.getRole());
-    } else {
-        System.out.println("No user found!");
+        System.out.println("Checking login for: " + email + " / " + password);
+        User user = ur.findByEmailAndPassword(email, password);
+        if (user != null) {
+            System.out.println("User found with role: " + user.getRole());
+        } else {
+            System.out.println("No user found!");
+        }
+        return user;
     }
-    return user;
-}
-
 
     // Get all users
     public List<User> getAllUsers() {

@@ -95,16 +95,17 @@ public class UserController {
             @RequestParam String password,
             Model model, HttpSession session) {
 
-        User existingUser = us.login(email, password);
+        User existingUser = us.login(email.trim(), password.trim());
 
         if (existingUser != null) {
             // 👉 If email matches admin email, force role to ADMIN
             if ("arpitpatidar8827@gmail.com".equalsIgnoreCase(existingUser.getEmail())) {
-                existingUser.setRole("ADMIN"); // ✅ manually set
+                existingUser.setRole("ADMIN");
             }
 
             session.setAttribute("user", existingUser);
 
+            // ✅ Now check if role is ADMIN
             if ("ADMIN".equalsIgnoreCase(existingUser.getRole())) {
                 return "redirect:/admin/Dashboard";
             } else {
