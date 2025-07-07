@@ -73,6 +73,14 @@
       background-color: #00c9cc;
       transform: scale(1.03);
     }
+    .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #00f9ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
   </style>
 </head>
 <body>
@@ -108,6 +116,8 @@
       </div>
 
       <button type="submit" class="submit-btn">Submit Quiz</button>
+        <a th:href="@{/Quizzes}" class="back-link">← Back to Quizzes</a>
+
     </form>
   </div>
 

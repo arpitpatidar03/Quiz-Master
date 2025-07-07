@@ -81,7 +81,7 @@
             <tbody>
                 <tr th:each="result, iter : ${results}">
                     <td th:text="${iter.index + 1}">1</td>
-                    <td th:text="${result.user.name}">Username</td>
+                    <td th:text="${result.user.username}">Username</td>
                     <td th:text="${result.quiz.title}">Quiz Title</td>
                     <td th:text="${result.score}">Score</td>
                 </tr>

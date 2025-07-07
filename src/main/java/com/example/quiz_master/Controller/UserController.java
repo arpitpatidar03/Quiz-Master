@@ -34,7 +34,7 @@ public class UserController {
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
-            Optional<Result> total = rs.countByUser(user);
+            Long total = rs.countByUser(user);
             int high = rs.findMaxScoreByUser(user);
             Optional<Result> lastResult = rs.findLastAttemptByUser(user);
 

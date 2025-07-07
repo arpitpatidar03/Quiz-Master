@@ -23,7 +23,7 @@ public class ResultService {
         return repo.findAllByOrderByScoreDesc();
     }
 
-    public Optional<Result> countByUser(User user) {
+    public Long countByUser(User user) {
         return repo.countByUser(user);
     }
 

@@ -53,4 +53,9 @@ public class UserService {
     public void deleteUser(int id) {
         ur.deleteById(id);
     }
+
+    public User getUserById(int id) {
+        return ur.findById(id).orElse(null);
+    }
+
 }

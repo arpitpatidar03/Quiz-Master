@@ -13,6 +13,7 @@ import com.example.quiz_master.Bean.User;
 import com.example.quiz_master.Service.QuestionService;
 import com.example.quiz_master.Service.QuizService;
 import com.example.quiz_master.Service.ResultService;
+import com.example.quiz_master.Service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -28,6 +29,9 @@ public class QuizController {
     private QuizService quizService;
     @Autowired
     private ResultService rs;
+
+    @Autowired
+    private UserService us;
 
     @GetMapping
     public String showAllQuizzes(Model model) {
@@ -50,52 +54,56 @@ public class QuizController {
     }
 
     // Handle submitted answers and show result
-    @PostMapping("/submit-quiz")
-    public String submitQuiz(@RequestParam MultiValueMap<String, String> answers,
-            @RequestParam int quizId,
-            HttpSession session,
-            Model model) {
+   @PostMapping("/submit-quiz")
+public String submitQuiz(@RequestParam MultiValueMap<String, String> answers,
+                         @RequestParam int quizId,
+                         HttpSession session,
+                         Model model) {
 
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            model.addAttribute("error", "You must be logged in to submit a quiz.");
-            return "Login"; // or redirect
-        }
-
-        Quiz quiz = quizService.getQuizById(quizId);
-        if (quiz == null) {
-            model.addAttribute("error", "Quiz not found.");
-            return "error";
-        }
-
-        int score = 0;
-        int total = 0;
-
-        for (String key : answers.keySet()) {
-            if (!key.startsWith("q"))
-                continue;
-
-            try {
-                int qId = Integer.parseInt(key.substring(1));
-                String userAnswer = answers.getFirst(key);
-                Question question = questionService.getQuestionById(qId);
-                if (question != null && question.getCorrectAnswer().equalsIgnoreCase(userAnswer)) {
-                    score++;
-                }
-                total++;
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid question key: " + key);
-            }
-        }
-
-        Result result = new Result(user, quiz, score); // constructor-based assignment
-        System.out.println("Saving: " + result);
-
-        rs.save(result); // Will throw if user or quiz is null
-
-        model.addAttribute("score", score);
-        model.addAttribute("total", total);
-        return "Result";
+    User sessionUser = (User) session.getAttribute("user");
+    if (sessionUser == null) {
+        model.addAttribute("error", "You must be logged in to submit a quiz.");
+        return "Login";
     }
+
+    // ✅ Re-fetch the user from the DB (fixes lazy loading issue)
+    User user = us.getUserById(sessionUser.getId());
+
+    Quiz quiz = quizService.getQuizById(quizId);
+    if (quiz == null) {
+        model.addAttribute("error", "Quiz not found.");
+        return "error";
+    }
+
+    int score = 0;
+    int total = 0;
+
+    for (String key : answers.keySet()) {
+        if (!key.startsWith("q"))
+            continue;
+
+        try {
+            int qId = Integer.parseInt(key.substring(1));
+            String userAnswer = answers.getFirst(key);
+            Question question = questionService.getQuestionById(qId);
+            if (question != null && question.getCorrectAnswer().equalsIgnoreCase(userAnswer)) {
+                score++;
+            }
+            total++;
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid question key: " + key);
+        }
+    }
+
+    Result result = new Result(user, quiz, score);
+    System.out.println("Saving result: user=" + user.getUsername() + ", quiz=" + quiz.getTitle() + ", score=" + score);
+
+
+    rs.save(result); // ✅ user and quiz are now properly attached entities
+
+    model.addAttribute("score", score);
+    model.addAttribute("total", total);
+    return "Result";
+}
 
 }
