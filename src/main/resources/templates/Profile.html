@@ -5,140 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Profile - Quiz Master</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 15px 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #00f9ff;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #00f9ff;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .profile-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: #00f9ff;
-      color: #000;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 20px;
-      text-transform: uppercase;
-      box-shadow: 0 0 10px rgba(0, 249, 255, 0.4);
-    }
-
-    .logout-btn {
-      background-color: #ff4c4c;
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-    }
-
-    .logout-btn:hover {
-      background-color: #e60000;
-    }
-
-    .profile-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80vh;
-    }
-
-    .profile-card {
-      background: rgba(255, 255, 255, 0.07);
-      padding: 40px;
-      border-radius: 15px;
-      width: 350px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0, 249, 255, 0.1);
-    }
-
-    .profile-card h2 {
-      font-size: 26px;
-      color: #00f9ff;
-      margin-bottom: 10px;
-    }
-
-    .profile-card p {
-      font-size: 16px;
-      color: #d6faff;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/profile.css">
 </head>
 
 <body>
 
   <header>
-    <nav>
-      <div class="logo">🧠 Quiz Master</div>
-      <ul class="nav-links">
-        <li><a th:href="@{/Home}">Home</a></li>
-        <li><a th:href="@{/Quizzes}">Quizzes</a></li>
-        <li><a th:href="@{/Leaderboard}">Leaderboard</a></li>
-      </ul>
-      <div class="nav-right">
-        <a th:href="@{/Profile}" class="profile-icon"
-          th:text="${user != null and user.email != null ? user.email.substring(0,1).toUpperCase() : 'U'}"></a>
-      </div>
-    </nav>
+    <div class="logo">🧠 Quiz Master</div>
+    <ul class="nav-links">
+      <li><a th:href="@{/Home}">Home</a></li>
+      <li><a th:href="@{/Quizzes}">Quizzes</a></li>
+      <li><a th:href="@{/Leaderboard}">Leaderboard</a></li>
+    </ul>
   </header>
 
-  <div class="profile-container">
+  <div class="main">
     <div class="profile-card">
+      <div class="profile-avatar" th:text="${user.username != null ? user.username.substring(0,1).toUpperCase() : 'U'}">U</div>
       <h2 th:text="${user.username}">User Name</h2>
-      <p th:text="${user.email}">user@email.com</p><br>
-      <a th:href="@{/Logout}" class="logout-btn">Logout</a>
-
+      <p th:text="${user.email}">user@email.com</p>
+      <a class="logout-btn" th:href="@{/Logout}">Logout</a>
     </div>
   </div>
 

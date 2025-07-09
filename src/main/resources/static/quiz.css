@@ -1,0 +1,119 @@
+  body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      margin: 0;
+      padding: 40px;
+  }
+
+  .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 249, 255, 0.1);
+  }
+
+  h2 {
+      color: #00f9ff;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+  }
+
+  fieldset {
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+  }
+
+  legend {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 10px;
+  }
+
+  label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+      color: #d6faff;
+  }
+
+  input[type="radio"] {
+      margin-right: 10px;
+  }
+
+  .submit-btn {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background-color: #00f9ff;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 249, 255, 0.5);
+      transition: background 0.3s ease, transform 0.2s;
+  }
+
+  .submit-btn:hover {
+      background-color: #00c9cc;
+      transform: scale(1.03);
+  }
+
+  .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #00f9ff;
+      text-decoration: none;
+      font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+      .container {
+          padding: 25px 20px;
+      }
+
+      h2 {
+          font-size: 24px;
+      }
+
+      fieldset {
+          padding: 15px;
+      }
+
+      legend {
+          font-size: 16px;
+      }
+
+      .submit-btn {
+          font-size: 15px;
+          padding: 10px 20px;
+      }
+  }
+
+  @media (max-width: 480px) {
+      body {
+          padding: 20px;
+      }
+
+      .container {
+          padding: 20px 15px;
+      }
+
+      .submit-btn {
+          font-size: 14px;
+      }
+
+      label {
+          font-size: 14px;
+      }
+  }

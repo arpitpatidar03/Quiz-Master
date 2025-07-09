@@ -73,7 +73,7 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     input {
@@ -83,6 +83,7 @@
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
       font-size: 15px;
+      transition: 0.2s ease;
     }
 
     input::placeholder {
@@ -99,7 +100,7 @@
       color: #000;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: 0.3s ease;
     }
 
     input[type="submit"]:hover {
@@ -107,19 +108,26 @@
       transform: scale(1.02);
     }
 
-    .login-link {
+    .error {
+      color: #ff4b4b;
+      font-size: 14px;
+      text-align: center;
+      margin-top: -8px;
+    }
+
+    .register-link {
       text-align: center;
       margin-top: 12px;
       font-size: 14px;
     }
 
-    .login-link a {
+    .register-link a {
       color: #00f9ff;
       text-decoration: none;
       font-weight: 500;
     }
 
-    .login-link a:hover {
+    .register-link a:hover {
       color: #00c9cc;
     }
 

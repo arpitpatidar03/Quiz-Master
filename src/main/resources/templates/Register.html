@@ -4,122 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Register | Quiz Master</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      color: #fff;
-    }
-
-    .register-container {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 40px;
-      border-radius: 16px;
-      width: 400px;
-      box-shadow: 0 0 25px rgba(0, 249, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .register-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .register-header h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: #00f9ff;
-    }
-
-    .register-header p {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 15px;
-    }
-
-    input[type="submit"] {
-      background-color: #00f9ff;
-      color: #000;
-      padding: 12px;
-      font-weight: bold;
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 10px;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #00c9cc;
-    }
-
-    .login-link {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .login-link a {
-      color: #00f9ff;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .login-link a:hover {
-      text-decoration: underline;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ffcc00;
-      margin-bottom: 5px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/register.css">
 </head>
 
 <body>
 
-  <div class="register-container">
-    <div class="register-header">
-      <div class="logo">🧠 Quiz Master</div>
-      <h1>Create Account</h1>
-      <p>Join us and test your skills!</p>
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h1>🧠 <span>Quiz Master</span></h1>
+      <p>Register now and join the quiz revolution.<br> Sharpen your skills, compete & grow!</p>
     </div>
 
-    <form th:action="@{/Register}" th:object="${user}" method="post">
-      <input type="text" th:field="*{username}" placeholder="Full Name" required />
-      <input type="email" th:field="*{email}" placeholder="Email" required />
-      <input type="password" th:field="*{password}" placeholder="Password" required />
-      <input type="submit" value="Register" />
-    </form>
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <h2>Create Account</h2>
 
+      <form th:action="@{/Register}" th:object="${user}" method="post">
+        <input type="text" th:field="*{username}" placeholder="Full Name" required />
+        <input type="email" th:field="*{email}" placeholder="Email" required />
+        <input type="password" th:field="*{password}" placeholder="Password" required />
+        <input type="submit" value="Register" />
+      </form>
 
-
-    <div class="login-link">
-      Already have an account? <a href="Login">Login here</a>
+      <div class="login-link">
+        Already have an account? <a th:href="@{/Login}">Login here</a>
+      </div>
     </div>
   </div>
 

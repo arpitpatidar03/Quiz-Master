@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------------- HEADER ------------------ */
+header {
+  background: #1e1e3f;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00f9ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: #00f9ff;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #00f9ff;
+}
+
+.profile-icon {
+  background-color: #00f9ff;
+  color: #000;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 249, 255, 0.4);
+  font-size: 18px;
+  margin-left: auto;
+}
+
+/* --------------- HERO SECTION --------------- */
+.hero {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 249, 255, 0.2);
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    color: #00f9ff;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #d6faff;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 12px 28px;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ---------------- DASHBOARD ------------------ */
+.dashboard-section {
+    padding: 60px 20px;
+    background-color: #12122b;
+}
+
+.dashboard {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.dashboard-card {
+    flex: 1 1 280px;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 249, 255, 0.1);
+}
+
+.dashboard-card h3 {
+    font-size: 18px;
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+.dashboard-card p {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ----------------- FOOTER ------------------ */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0f0c29;
+    font-size: 14px;
+    color: #999;
+}
+
+/* --------- RESPONSIVE HEADER NAV ----------- */
+
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    background-color: #1e1e3f;
+    padding: 15px 20px;
+    display: none;
+    margin-top: 10px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    padding: 10px 0;
+  }
+
+  .profile-icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+}
