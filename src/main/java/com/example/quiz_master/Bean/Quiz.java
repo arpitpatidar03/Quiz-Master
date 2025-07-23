@@ -18,6 +18,6 @@ public class Quiz {
     private List<Question> questions;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 }
